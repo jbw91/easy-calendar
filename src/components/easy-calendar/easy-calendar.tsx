@@ -50,7 +50,7 @@ export class EasyCalendar {
         {this.days.map((week: Array<number>) =>
           <div class="row">
             {week.map((day: number) =>
-              <div class={day === today.getDay() ? 'day today' : (day ? 'day hover' : 'day')}>{day}</div>
+              <div class={day === today.getDate() ? 'day today' : (day ? 'day hover' : 'day')}>{day}</div>
             )}
           </div>
         )}
