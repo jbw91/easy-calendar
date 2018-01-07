@@ -1,8 +1,8 @@
 exports.config = {
-  namespace: 'mycomponent',
+  namespace: 'easy-calendar',
   generateDistribution: true,
   bundles: [
-    { components: ['my-component'] }
+    { components: ['easy-calendar'] }
   ]
 };
 

@@ -1,14 +1,14 @@
 {
-  "name": "my-component",
+  "name": "easy-calendar",
   "version": "0.0.1",
-  "description": "Stencil Component Starter",
-  "main": "dist/mycomponent.js",
+  "description": "A beautifully simple native web component calendar built with Stencil",
+  "main": "dist/easy-calendar.js",
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
     "dist/"
   ],
-  "browser": "dist/mycomponent.js",
+  "browser": "dist/easy-calendar.js",
   "scripts": {
     "build": "stencil build",
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
@@ -18,24 +18,26 @@
     "test.watch": "jest --watch --no-cache"
   },
   "dependencies": {
-    "@stencil/core": "next"
+    "@stencil/core": "next",
+    "hammerjs": "^2.0.8"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
     "@stencil/utils": "latest",
+    "@types/hammerjs": "^2.0.35",
     "@types/jest": "^21.1.1",
     "jest": "^21.2.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "git+https://github.com/jbw91/easy-calendar.git"
   },
   "author": "Ionic Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
+    "url": "https://github.com/jbw91/easy-calendar"
   },
-  "homepage": "https://github.com/ionic-team/stencil",
+  "homepage": "https://github.com/jbw91/easy-calendar",
   "jest": {
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"

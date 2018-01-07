@@ -6,31 +6,30 @@
 
 
 import {
-  MyComponent as MyComponent
-} from './components/my-component/my-component';
+  EasyCalendar as EasyCalendar
+} from './components/easy-calendar/easy-calendar';
 
 declare global {
-  interface HTMLMyComponentElement extends MyComponent, HTMLElement {
+  interface HTMLEasyCalendarElement extends EasyCalendar, HTMLElement {
   }
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  var HTMLEasyCalendarElement: {
+    prototype: HTMLEasyCalendarElement;
+    new (): HTMLEasyCalendarElement;
   };
   interface HTMLElementTagNameMap {
-    "my-component": HTMLMyComponentElement;
+    "easy-calendar": HTMLEasyCalendarElement;
   }
   interface ElementTagNameMap {
-    "my-component": HTMLMyComponentElement;
+    "easy-calendar": HTMLEasyCalendarElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "my-component": JSXElements.MyComponentAttributes;
+      "easy-calendar": JSXElements.EasyCalendarAttributes;
     }
   }
   namespace JSXElements {
-    export interface MyComponentAttributes extends HTMLAttributes {
-      first?: string;
-      last?: string;
+    export interface EasyCalendarAttributes extends HTMLAttributes {
+      
     }
   }
 }

@@ -1,0 +1,87 @@
+@import '../../styles/variables.scss';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+easy-calendar {
+  font-family: 'Open Sans', sans-serif;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .month-row {
+    height: 40px;
+
+    > * {
+      line-height: 40px;
+    }
+
+    .month-year-header {
+      font-size: 20px;
+      color: $text-color-default;
+    }
+
+    .arrow-container {
+      width: 40px;
+      display: flex;
+      align-items: center;
+
+      &.start {
+        justify-content: flex-start;
+      }
+      &.end {
+        justify-content: flex-end;
+      }
+
+      .arrow {
+        width: 0;
+        height: 0;
+        border-top: 7px solid transparent;
+        border-bottom: 7px solid transparent;
+        display: inline-block;
+
+        &.left {
+          margin-left: 10px;
+          border-right: 6px solid $text-color-default;
+        }
+        &.right {
+          margin-right: 10px;
+          border-left: 6px solid $text-color-default;
+        }
+      }
+
+    }
+  }
+
+  .week-row {
+    margin: 5px 0px 5px 0px;
+
+    .week-day {
+      color: $gray;
+      text-transform: uppercase;
+      text-align: center;
+      width: 40px;
+      font-size: 12px;
+    }
+  }
+
+  .day {
+    text-align: center;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+
+    &.hover:hover {
+      border-radius: 50%;
+      background-color: $background-hover;
+    }
+
+    &.today {
+      border-radius: 50%;
+      color: $white;
+      background-color: $primary;
+    }
+  }
+}
