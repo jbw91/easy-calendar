@@ -1,4 +1,4 @@
-import { Component, Element } from '@stencil/core';
+import { Component, Element, State } from '@stencil/core';
 import { EasyCalendarUtils } from './easy-calendar-utils'
 import 'hammerjs';
 
@@ -11,11 +11,13 @@ const SWIPE_LEFT_CODE = 2;
 })
 export class EasyCalendar {
   @Element() elRef: HTMLElement;
+  @State() currentDate: Date;
   days: number[][] = [];
-  currentMonthAndYear: Date;
+  today: Date;
 
   constructor() {
-    this.currentMonthAndYear = new Date();
+    this.currentDate = new Date();
+    this.today = new Date();
   }
 
   componentDidLoad() {
@@ -31,16 +33,14 @@ export class EasyCalendar {
   }
 
   render() {
-    const today = new Date();
-    const currMonth = this.currentMonthAndYear;
-    this.days = EasyCalendarUtils.getCalendarDates(currMonth.getFullYear(), currMonth.getMonth());
+    this.days = EasyCalendarUtils.getCalendarDates(this.currentDate.getFullYear(), this.currentDate.getMonth());
 
     return (
       <div>
         <div class="row month-row">
-          <div class="arrow-container start"><div class="arrow left"></div></div>
-          <div class="month-year-header">{EasyCalendarUtils.monthsOfYear[currMonth.getMonth()]} {currMonth.getFullYear()}</div>
-          <div class="arrow-container end"><div class="arrow right"></div></div>
+          <div class="arrow-container start" onClick={() => this.previousMonth()}><div class="arrow left"></div></div>
+          <div class="month-year-header">{EasyCalendarUtils.monthsOfYear[this.currentDate.getMonth()]} {this.currentDate.getFullYear()}</div>
+          <div class="arrow-container end" onClick={() => this.nextMonth()}><div class="arrow right"></div></div>
         </div>
         <div class="row week-row">
           {EasyCalendarUtils.daysOfWeek.map((weekDay: string) =>
@@ -50,7 +50,9 @@ export class EasyCalendar {
         {this.days.map((week: Array<number>) =>
           <div class="row">
             {week.map((day: number) =>
-              <div class={day === today.getDate() ? 'day today' : (day ? 'day hover' : 'day')}>{day}</div>
+              <div class={day === this.today.getDate() && this.currentDate.getFullYear() === this.today.getFullYear() && this.currentDate.getMonth() === this.today.getMonth() ? 'day today' : (day ? 'day hover' : 'day')}>
+                {day}
+              </div>
             )}
           </div>
         )}
@@ -59,10 +61,12 @@ export class EasyCalendar {
   }
 
   nextMonth() {
-    console.log('GO TO NEXT MONTH');
+    let newDate = this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+    this.currentDate = new Date(newDate);
   }
 
   previousMonth() {
-    console.log('GO TO PREVIOUS MONTH');
+    let newDate = this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+    this.currentDate = new Date(newDate);
   }
 }
