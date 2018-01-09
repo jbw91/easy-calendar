@@ -1,5 +1,5 @@
 import { Component, Element, State } from '@stencil/core';
-import { EasyCalendarUtils } from './easy-calendar-utils'
+import { EasyCalendarUtils } from './easy-calendar-utils';
 import 'hammerjs';
 
 const SWIPE_RIGHT_CODE = 4;
@@ -39,7 +39,9 @@ export class EasyCalendar {
       <div>
         <div class="row month-row">
           <div class="arrow-container start" onClick={() => this.previousMonth()}><div class="arrow left"></div></div>
-          <div class="month-year-header">{EasyCalendarUtils.monthsOfYear[this.currentDate.getMonth()]} {this.currentDate.getFullYear()}</div>
+          <div class="month-year-header">
+            {EasyCalendarUtils.monthsOfYear[this.currentDate.getMonth()]} {this.currentDate.getFullYear()}
+          </div>
           <div class="arrow-container end" onClick={() => this.nextMonth()}><div class="arrow right"></div></div>
         </div>
         <div class="row week-row">
@@ -47,10 +49,12 @@ export class EasyCalendar {
             <div class="week-day">{weekDay}</div>
           )}
         </div>
-        {this.days.map((week: Array<number>) =>
+        {this.days.map((week: number[]) =>
           <div class="row">
             {week.map((day: number) =>
-              <div class={day === this.today.getDate() && this.currentDate.getFullYear() === this.today.getFullYear() && this.currentDate.getMonth() === this.today.getMonth() ? 'day today' : (day ? 'day hover' : 'day')}>
+              <div class={day === this.today.getDate() &&
+                this.currentDate.getFullYear() === this.today.getFullYear() &&
+                this.currentDate.getMonth() === this.today.getMonth() ? 'day today' : (day ? 'day hover' : 'day')}>
                 {day}
               </div>
             )}
@@ -61,12 +65,12 @@ export class EasyCalendar {
   }
 
   nextMonth() {
-    let newDate = this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+    const newDate = this.currentDate.setMonth(this.currentDate.getMonth() + 1);
     this.currentDate = new Date(newDate);
   }
 
   previousMonth() {
-    let newDate = this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+    const newDate = this.currentDate.setMonth(this.currentDate.getMonth() - 1);
     this.currentDate = new Date(newDate);
   }
 }
