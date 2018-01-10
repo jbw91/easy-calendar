@@ -4,6 +4,10 @@
 easy-calendar {
   font-family: 'Open Sans', sans-serif;
 
+  & > div {
+    max-width: 600px;
+  }
+
   .row {
     display: flex;
     flex-direction: row;
@@ -66,13 +70,16 @@ easy-calendar {
     }
   }
 
+  .row {
+    margin-bottom: 5px;
+  }
+
   .day {
     text-align: center;
     line-height: 40px;
     width: 40px;
     height: 40px;
     font-size: 14px;
-    background-color: transparent;
     transition: all 100ms ease-in-out;
 
     &.hover:hover {
